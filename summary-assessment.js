@@ -223,7 +223,8 @@ function each(coll, f) {
     this.readBooks.push(this.currentRead) ;
     this.read++
     this.currentRead = this.toRead[0] ;
-    this.unread-- ;
+    this.toRead.splice(0,1);
+    this.unRead-- ;
   }
 
   
@@ -246,6 +247,37 @@ function each(coll, f) {
   //  safe('money','small') => "watch gold-bar money"
   
   // Write your code here .....
+  function makeSafe(size){
+    var safeSize = size ;
+    var safeSpace = safeSize ;
+    var items = [] ;
+    return function(item, itemSize){
+        var sized = {
+            'small': 1,
+            'medium': 2,
+            'big': 3
+        }
+
+        if(sized[itemSize] === undefined){
+          return "size undefined"
+        }
+        else{
+          if(sized[itemSize] > safeSpace){
+            return 'Cant fit'
+          }
+          else if(sized[itemSize] < safeSpace){
+            items.push(item) ;
+            safeSpace = safeSpace - sized[itemSize]
+          }
+          else {
+            items.push(item) ;
+            safeSpace -= sized[itemSize]
+            return items.join(', ')
+          }
+        }
+
+      }
+    }
   
   //=============================================================================
   /*                                  Q8                                       */
