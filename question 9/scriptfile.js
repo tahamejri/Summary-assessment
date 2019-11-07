@@ -18,18 +18,19 @@ var sum = num1 + num2 + num3 ;
 if(sum === 3){
 	var blackw = $('<li></li>') ;
 	blackw.html('<li>black</li>') ;
-	
+	blackw.addClass('black') ;
 	$('#ulist').append(blackw)
 	}
 if(sum === 2){
 	var blackw = $('<li></li>') ;
 	blackw.html('<li>purple = blue + red</li><br><li>green = blue + yellow</li><br><li>orange = red + yellow</li>') ;
-	
+	blackw.addClass('purple') ;
 	$('#ulist').append(blackw)
 	}
 if(sum === 1){
 	var blackw = $('<li></li>') ;
 	blackw.html('<li>yellow, blue or red</li>') ;
+	blackw.addClass('yellow') ;
 	
 	$('#ulist').append(blackw)
 	}

@@ -326,3 +326,18 @@ function each(coll, f) {
   
   // 4- what is the diffrence between Closure's methods and The OOP's methods?
   
+
+  //1-closer is used to wrap a function so we respect the rule of not using only parameter and local variable
+  //, so in that way we can memorise a result or many results of our function in an instance.
+ 
+
+
+ //2- "this" in oop is like a hook, refers to her parent object,
+ // it refers to wherever object it is.
+
+
+ //3- jQuery is a javascript library, it allows us to reduce the javascript code using it's function, so
+ // in other words jquery containes alot of functions that each time instead of writing long line we call a jquery function 
+
+ //4-Closures respects the rule of using only parameters and local variables, while in oop we can use 
+ //function stored in variables in the global scope, that way we gain memory.
