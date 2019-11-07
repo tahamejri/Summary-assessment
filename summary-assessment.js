@@ -59,7 +59,13 @@ function each(coll, f) {
   //wordLengths("hello its me") // [5,3,2]
   
   function wordLengths(str) {
-      // TODO: your code here 
+    var arrOfWords = str.split(' ') ;
+    var resultArr = [] ;
+
+    for(var i = 0; i<arrOfWords.length; i++){
+      resultArr.push(arrOfWords[i].length) 
+    }
+    return resultArr ;
   }
   
   //=============================================================================
@@ -72,7 +78,14 @@ function each(coll, f) {
   // countOccurrences("hello, world!", "l"); // 3
   
   function countOccurrences(string, character) {
-      // your code is here
+      var count = 0 ;
+      var arrofchar = string.split('') ;
+      return reduce(arrofchar, function(acc,char){
+        if(char === character){
+          acc++ ;
+        }
+        return acc ;
+      },0)
   }
   
   //=============================================================================
@@ -84,7 +97,10 @@ function each(coll, f) {
   // wordsLongerThanThree("Hello Mad World") //["Hello", "World"]
   
   function wordsLongerThanThree(str) {
-      // TODO: your code here 
+      arrOfWords = str.split(' ') ;
+      return filter(arrOfWords, function(word){
+        return word.length > 3 ;
+      })
   }
   
   //=============================================================================
@@ -99,7 +115,10 @@ function each(coll, f) {
   //repeatString('dog', 3); // => 'dog' + 'dog' + 'dog' => 'dogdogdog'
   
   function repeatString(str, count) { 
-   // TODO: your code here 
+   if(count ===0){
+    return '' ;
+   } 
+   return str + repeatString(str, count-1)
   } 
    
   
@@ -129,7 +148,35 @@ function each(coll, f) {
   // pizza.eatSlice();
   
   // Write your code here .....
-  
+  function makePizza(crust, size, numberOfSlice){
+  var crustv = crust ;
+  var sizev = size ;
+  var numberOfSlicev = numberOfSlice ;
+  var ingredients = [] ;
+
+  return {
+    addIngredients: function(ingredient){
+      ingredients.push(ingredient)
+    },
+    displayIngredients: function(){
+      return ingredients.join(',')
+    },
+    bakePizza: function(){
+      setTimeout(function(){
+        console.log('Your ' + crustv + ' ' + sizev + ' ' + numberOfSlicev + ' is done')
+      },2000)
+    },
+    eatSlice: function(){
+      if(numberOfSlicev>0){
+        numberOfSlicev -= 1 ;
+      }
+      else{
+        console.log('you finished your pizza')
+      }
+    }
+
+  }
+}
   //=============================================================================
   /*                                  Q6                                      */
   //=============================================================================
@@ -153,8 +200,32 @@ function each(coll, f) {
   */
   
   // Now, to make sure that you are actually reading, make a comment below this and type: Yes I am
+                                                    Yes I am
   
-  // Write your code here .....
+  function ReadingList(){
+    var obj = {} ;
+    obj.read = 0 ;
+    obj.unRead = 0;
+    obj.toRead = [];
+    obj.currentRead = '' ;
+    obj.readBooks = [] ;
+    obj.AddBook = addBook ;
+    obj.finishCurrentBook = finishCurrentBook ;
+
+    return obj ;
+  }
+  var addBook = function(bookName){
+    this.toRead.push(bookName)
+    this.unRead ++
+  }
+
+  var finishCurrentBook = function(){
+    this.readBooks.push(this.currentRead) ;
+    this.read++
+    this.currentRead = this.toRead[0] ;
+    this.unread-- ;
+  }
+
   
   //=============================================================================
   /*                                  Q7                                       */
